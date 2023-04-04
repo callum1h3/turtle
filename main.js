@@ -41,7 +41,7 @@ app.post('/master', function(req, res,next)
 app.post('/sendcommand', function(req, res,next)
 {
     var id = req.body.id
-    var command = Table(req.body.command)
+    var command = req.body.command
 
     if (!(id in turtle_commands))
     {
@@ -49,8 +49,7 @@ app.post('/sendcommand', function(req, res,next)
         turtle_commands[id]["queuedcommands"] = []
     }
 
-    var arr = Array(turtle_commands[id]["queuedcommands"]);
-    arr.push(command);
+    turtle_commands[id]["queuedcommands"].push(command);
 })
 
 
