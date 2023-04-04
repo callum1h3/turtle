@@ -13,7 +13,7 @@ app.post('/', function(req, res)
     res.send('Data Received: ' + filter);
 })
 
-app.use('/', express.static(public));
+app.use(express.json());
 
 app.listen(3000, function()
 {
