@@ -30,7 +30,7 @@ app.post('/turtle', function(req, res,next)
     };
 
     res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
-    turtle_commands[id]["queuedcommands"] = {}
+    turtle_commands[id]["queuedcommands"] = []
 })
 
 app.post('/master', function(req, res,next)
