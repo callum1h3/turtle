@@ -9,7 +9,8 @@ var public = path.join(appDir, 'public');
 
 app.get('/', function(req, res)
 {
-    res.send("hello"); 
+    
+    res.send(req.body.filter); 
 })
 
 app.use('/', express.static(public));
