@@ -38,14 +38,10 @@ app.post('/master', function(req, res,next)
     res.send(JSON.stringify(turtle_commands));
 })
 
-app.use(bodyParser.json());
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.post('/sendcommand', function(req, res,next)
 {
-    var id = req.body.id
-    var command = req.body.command
+    var id = "512"
+    var command = "hi"
 
     if (!(id in turtle_commands))
     {
