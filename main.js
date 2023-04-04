@@ -8,7 +8,11 @@ const { dirname } = require('path');
 const appDir = dirname(require.main.filename);
 var public = path.join(appDir, 'public');
 
-app.post('/', function(req, res)
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/turtle', function(req, res,next)
 {
     res.send('Data Received: ' + String(req.body.id));
 })
