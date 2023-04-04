@@ -10,7 +10,7 @@ var public = path.join(appDir, 'public');
 
 app.post('/', function(req, res)
 {
-    res.send('Data Received: ' + req.body.filter);
+    res.send('Data Received: ' + String(req.body));
 })
 
 app.listen(3000, function()
