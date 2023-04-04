@@ -9,8 +9,7 @@ var public = path.join(appDir, 'public');
 
 app.post('/', function(req, res)
 {
-    const { filter } = req.body;
-    res.send('Data Received: ' + filter);
+    res.send('Data Received: ' + req.body.filter);
 })
 
 app.use(express.json());
