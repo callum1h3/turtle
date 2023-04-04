@@ -9,8 +9,8 @@ var public = path.join(appDir, 'public');
 
 app.post('/', function(req, res)
 {
-    req.header('Content-Type')  // "application/json"
-    res.send(req.body.filter); 
+    let data = req.body;
+    res.send('Data Received: ' + JSON.stringify(data));
 })
 
 app.use('/', express.static(public));
