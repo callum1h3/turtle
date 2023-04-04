@@ -8,9 +8,9 @@ const { dirname } = require('path');
 const appDir = dirname(require.main.filename);
 var public = path.join(appDir, 'public');
 
-app.get('/', function(req, res)
+app.post('/', function(req, res)
 {
-    res.send('Data Received: ' + String(req.params('id')));
+    res.send('Data Received: ' + String(req.body.id));
 })
 
 app.listen(3000, function()
