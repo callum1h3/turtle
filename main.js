@@ -10,9 +10,9 @@ const appDir = dirname(require.main.filename);
 var public = path.join(appDir, 'public');
 var turtle_commands = {};
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.post('/turtle', function(req, res,next)
 {
@@ -44,7 +44,7 @@ app.post('/sendcommand', function(req, res,next)
     var command = req.body.command
 
     res.send(command);
-    
+
     if (!(id in turtle_commands))
     {
         turtle_commands[id] = {}
