@@ -40,9 +40,11 @@ app.post('/master', function(req, res,next)
 
 app.post('/sendcommand', function(req, res,next)
 {
-    var id = "512"
-    var command = "hi"
+    var id = req.body.id
+    var command = req.body.command
 
+    res.send(command);
+    
     if (!(id in turtle_commands))
     {
         turtle_commands[id] = {}
