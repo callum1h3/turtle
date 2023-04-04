@@ -7,9 +7,9 @@ const { dirname } = require('path');
 const appDir = dirname(require.main.filename);
 var public = path.join(appDir, 'public');
 
-app.get('/', function(req, res)
+app.post('/', function(req, res)
 {
-    
+    req.header('Content-Type')  // "application/json"
     res.send(req.body.filter); 
 })
 
