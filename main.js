@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.post('/turtle', function(req, res,next)
 {
-    var id = req.body.id
+    let id = req.body.id
     if (!(id in turtle_commands))
     {
         turtle_commands[id] = {}
@@ -40,8 +40,8 @@ app.post('/master', function(req, res,next)
 
 app.post('/sendcommand', function(req, res,next)
 {
-    var id = req.body.id
-    var command = req.body.command
+    let id = req.body.id
+    let command = req.body.command
 
     res.send(command);
 
