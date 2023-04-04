@@ -17,41 +17,36 @@ app.use(bodyParser.json());
 app.post('/turtle', function(req, res,next)
 {
     let id = req.body.id;
+    let t = req.body.t;
+
     if (!(id in turtle_commands))
     {
         turtle_commands[id] = {};
         turtle_commands[id]["queuedcommands"] = [];
     }
 
-    turtle_commands[id]["info"] = {
-        x : req.body.x,
-        y : req.body.y,
-        z : req.body.z
-    };
+    if (t == 1)
+    {
+        turtle_commands[id]["info"] = {
+            x : req.body.x,
+            y : req.body.y,
+            z : req.body.z
+        };
+    
+        res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
+        turtle_commands[id]["queuedcommands"] = []
+    }
+    else 
+    {
+        let command = req.body.command;
+        turtle_commands[id]["queuedcommands"].push(command);
+    }
 
-    res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
-    turtle_commands[id]["queuedcommands"] = []
 })
 
 app.post('/master', function(req, res,next)
 {
     res.send(JSON.stringify(turtle_commands));
-})
-
-app.post('/sendcommand', function(req, res,next)
-{
-    let id = req.body.id;
-    let command = req.body.command;
-
-    res.send(command);
-
-    if (!(id in turtle_commands))
-    {
-        turtle_commands[id] = {};
-        turtle_commands[id]["queuedcommands"] = [];
-    }
-
-    turtle_commands[id]["queuedcommands"].push(command);
 })
 
 
