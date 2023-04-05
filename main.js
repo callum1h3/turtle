@@ -9,6 +9,7 @@ const { domainToASCII } = require('url');
 const appDir = dirname(require.main.filename);
 var public = path.join(appDir, 'public');
 var turtle_commands = {};
+var turtle_counter = 1
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -17,14 +18,13 @@ app.use(bodyParser.json());
 app.post('/turtle', function(req, res,next)
 {
     let id = req.body.id;
-    let t = req.body.t;
+    let t = Number(req.body.t);
 
     if (!(id in turtle_commands))
     {
         turtle_commands[id] = {};
         turtle_commands[id]["queuedcommands"] = [];
     }
-
     if (t == 1)
     {
         turtle_commands[id]["info"] = {
@@ -35,6 +35,21 @@ app.post('/turtle', function(req, res,next)
     
         res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
         turtle_commands[id]["queuedcommands"] = []
+    }
+    else if (t == 2)
+    {
+        res.send(turtle_counter);
+        turtle_counter = turtle_counter + 1
+    }
+    else if (t == 3)
+    {
+        turtle_commands[id]["info"] = {
+            x : req.body.x,
+            y : req.body.y,
+            z : req.body.z
+        };
+
+        res.send("");
     }
     else 
     {
