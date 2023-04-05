@@ -19,8 +19,6 @@ app.post('/turtle', function(req, res, next)
 {
     let id = req.body.id;
     let t = req.body.t;
-    res.send(t);
-    return
 
     if (!(id in turtle_commands))
     {
