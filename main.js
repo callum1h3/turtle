@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-app.post('/turtle', function(req, res,next)
+app.post('/turtle', function(req, res, next)
 {
     let id = req.body.id;
     let t = req.body.t;
@@ -25,6 +25,7 @@ app.post('/turtle', function(req, res,next)
         turtle_commands[id] = {};
         turtle_commands[id]["queuedcommands"] = [];
     }
+
     if (t == 1)
     {
         turtle_commands[id]["info"] = {
