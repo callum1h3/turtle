@@ -55,7 +55,7 @@ app.post('/turtle', function(req, res,next)
     {
         let command = req.body.command;
         turtle_commands[id]["queuedcommands"].push(command);
-        res.send(t)
+        res.send("Sent :)")
     }
 
 })
