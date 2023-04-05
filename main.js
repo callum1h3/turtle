@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.post('/turtle', function(req, res, next)
 {
     let id = req.body.id;
-    let t = String(req.body.t);
+    let t = req.body.t;
 
     if (!(id in turtle_commands))
     {
@@ -26,7 +26,7 @@ app.post('/turtle', function(req, res, next)
         turtle_commands[id]["queuedcommands"] = [];
     }
 
-    if (t == "1")
+    if (t == 1)
     {
         turtle_commands[id]["info"] = {
             x : req.body.x,
@@ -37,12 +37,12 @@ app.post('/turtle', function(req, res, next)
         res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
         turtle_commands[id]["queuedcommands"] = []
     }
-    else if (t == "2")
+    else if (t == 2)
     {
-        res.send(turtle_counter);
+        res.send(String(turtle_counter));
         turtle_counter = turtle_counter + 1
     }
-    else if (t == "3")
+    else if (t == 3)
     {
         turtle_commands[id]["info"] = {
             x : req.body.x,
