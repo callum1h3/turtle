@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.post('/turtle', function(req, res, next)
 {
     let id = req.body.id;
-    let t = req.body.t;
+    let t = Number(req.body.t);
 
     if (!(id in turtle_commands))
     {
