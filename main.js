@@ -31,7 +31,8 @@ app.post('/turtle', function(req, res, next)
         turtle_commands[id]["info"] = {
             x : req.body.x,
             y : req.body.y,
-            z : req.body.z
+            z : req.body.z,
+            t : Date.now()
         };
     
         res.send(JSON.stringify(turtle_commands[id]["queuedcommands"]));
@@ -47,7 +48,8 @@ app.post('/turtle', function(req, res, next)
         turtle_commands[id]["info"] = {
             x : req.body.x,
             y : req.body.y,
-            z : req.body.z
+            z : req.body.z,
+            t : Date.now()
         };
 
         res.send("");
